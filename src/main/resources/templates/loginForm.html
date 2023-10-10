@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<th:block layout:fragment="css">
+  <style>
+        .error {
+            color: #bd2130;
+        }
+    </style>
+</th:block>
+<body>
+<!-- Content Fragment 사용 -->
+<th:block layout:fragment="content">
+  <form role="form" method="post" th:action="@{/login}">
+    <div class="form-group">
+      <label th:for="email">이메일주소</label>
+      <input type="email" name="email"
+             placeholder="이메일을 입력해주세요">
+    </div>
+    <div class="form-group">
+      <label th:for="password">비밀번호</label>
+      <input type="password" name="password" id="password"
+             placeholder="비밀번호 입력">
+    </div>
+    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+    <button type="submit">로그인</button>
+    <button type="button" onclick="location.href='/members/new'">회원가입</button>
+    <input type="hidden">
+  </form>
+</th:block>
+
+</body>
+</html>

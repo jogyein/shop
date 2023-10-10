@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈쇼핑 메인 페이지</title>
+<body>
+<div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <th:block sec:authorize="isAuthenticated()">
+                <li><a id="home" href="#" class="nav-link px-2 text-secondary"
+                       th:href="@{/main}">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary"
+                       th:href="@{/item/new}">상품 등록</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary"
+                       th:href="@{/items}">상품 관리</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary"
+                       th:href="@{/members/logout}">로그아웃</a></li>
+            </th:block>
+            <li sec:authorize="isAnonymous()"><a href="#" class="nav-link px-2 text-secondary"
+                                                 th:href="@{/members/loginForm}">로그인</a>
+            <li><a href="#" class="nav-link px-2 text-secondary"
+                   th:href="@{/cart}">장바구니</a></li>
+            <li><a href="#" class="nav-link px-2 text-secondary"
+                   th:href="@{/orders}">구매이력</a></li>
+            </li>
+        </ul>
+        <div class="text-end">
+        </div>
+    </div>
+</div>
+<!-- 추가적인 상품들도 동일한 구조로 추가 가능 -->
+</div>
+</body>
+</html>
+
+
+
+
